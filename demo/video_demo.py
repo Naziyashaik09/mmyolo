@@ -1,29 +1,17 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-"""Perform MMYOLO inference on a video as:
-
-```shell
-wget -P checkpoint https://download.openmmlab.com/mmyolo/v0/yolov5/yolov5_s-v61_syncbn_fast_8xb16-300e_coco/yolov5_s-v61_syncbn_fast_8xb16-300e_coco_20220918_084700-86e02187.pth # noqa: E501, E261.
-
-python demo/video_demo.py \
-    demo/video_demo.mp4 \
-    configs/yolov5/yolov5_s-v61_syncbn_fast_8xb16-300e_coco.py \
-    checkpoint/yolov5_s-v61_syncbn_fast_8xb16-300e_coco_20220918_084700-86e02187.pth \
-    --out demo_result.mp4
-```
-"""
 import argparse
 
 import cv2
 import mmcv
 from mmcv.transforms import Compose
-from mmdet.apis import inference_detector, init_detector
 from mmengine.utils import track_iter_progress
 
-from mmyolo.registry import VISUALIZERS
+from mmdet.apis import inference_detector, init_detector
+from mmdet.registry import VISUALIZERS
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='MMYOLO video demo')
+    parser = argparse.ArgumentParser(description='MMDetection video demo')
     parser.add_argument('video', help='Video file')
     parser.add_argument('config', help='Config file')
     parser.add_argument('checkpoint', help='Checkpoint file')
@@ -70,7 +58,7 @@ def main():
             args.out, fourcc, video_reader.fps,
             (video_reader.width, video_reader.height))
 
-    for frame in track_iter_progress(video_reader):
+    for frame in track_iter_progress((video_reader, len(video_reader))):
         result = inference_detector(model, frame, test_pipeline=test_pipeline)
         visualizer.add_datasample(
             name='video',
