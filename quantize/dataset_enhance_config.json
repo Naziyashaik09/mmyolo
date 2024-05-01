@@ -1,0 +1,14 @@
+{
+  "original_image_folder": "/home/viso/sample_data/augmented_images/",
+  "original_label_folder": "/home/viso/sample_data/augmented_images/txt_files",
+  "enhance_image_folder": "/home/viso/sample_data/augmented_images/train",
+  "enhance_label_folder": "/home/viso/sample_data/augmented_images/train",
+  "training_dataset_folder": "../yolo_dataset/Bookshelf_v1",
+  "augmentations": {
+    "noise": true,
+    "denoise": true,
+    "contrast": true,
+    "brightness": true,
+    "rotation": true
+  }
+}

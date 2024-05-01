@@ -1,0 +1,8 @@
+{
+  "original_image_folder": "/home/viso/sample_dataset/images",
+  "original_label_folder": "/home/viso/sample_dataset/txt_files",
+  "enhance_image_folder": "/home/viso/sample_dataset/augmented_images",
+  "enhance_label_folder": "/home/viso/sample_dataset/augmented_labels",
+  "training_dataset_folder": "../yolo_dataset/Bookshelf_v1",
+    "augmentations":"AUGMENTATIONS"
+}
